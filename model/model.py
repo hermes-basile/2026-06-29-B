@@ -129,7 +129,7 @@ class Model:
         return list(largest_component)
 
     def getAlbumInfoInLargestComponent(self):
-        """res = list of (album_title, num_tracks) for each album in the largest connected component"""
+        #res = list of (album_title, num_tracks) for each album in the largest connected component
         largest_component = self.getLargestConnectedComponent()
 
         result = []
