@@ -33,10 +33,12 @@ class View(ft.UserControl):
 
 
         self._ddAlbum = ft.Dropdown(label="Album")
+        self._txtInN = ft.TextField(label="Numero di brani")
         self._btnSelezione = ft.ElevatedButton(text="Trova selezione album",
                                               on_click=self._controller.handleSelezione)
 
-        row2 = ft.Row([ft.Container(self._ddAlbum, width=250),
+        row2 = ft.Row([ft.Container(self._ddAlbum, width=125),
+                       ft.Container(self._txtInN, width=125),
                        ft.Container(self._btnSelezione, width=250)],
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row2)
