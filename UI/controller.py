@@ -1,8 +1,5 @@
 import flet as ft
 
-from model.album import Album
-
-
 class Controller:
     def __init__(self, view, model):
         # the view, with the graphical elements of the UI
