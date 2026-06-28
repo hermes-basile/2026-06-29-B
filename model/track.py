@@ -14,13 +14,13 @@ class Track:
     UnitPrice: float
 
     def __hash__(self):
-        return hash(self.AlbumId)
+        return hash(self.TrackId)
 
     def __eq__(self, other):
-        return self.AlbumId == other.AlbumId
+        return self.TrackId == other.TrackId
 
     def __str__(self):
-        return f"{self.Title}"
+        return f"{self.Name}"
 
 
 
