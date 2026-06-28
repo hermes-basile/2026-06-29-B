@@ -40,24 +40,35 @@ class Model:
                 self.bestSelection = copy.deepcopy(parziale)
             return
 
-        if len(comp_rimanenti) == 0:
+        if not comp_rimanenti or N-len(parziale) > len(comp_rimanenti):
             return
 
         # provo ad aggiungere album da altre componenti che non ho ancora aggiunto
+
+        # prendo il primo
         nextComp = comp_rimanenti[0]
 
-        # Prima opzione: non prendo nessun album da questa componente
-        comp_rimanenti_aggiornate = copy.deepcopy(comp_rimanenti)
-        comp_rimanenti_aggiornate.remove(nextComp)
-        self._ricorsione(parziale, N, comp_rimanenti_aggiornate)
+        # Prima opzione: non prendo nessun album da questa componente, chiamo il metodo ricorsivo
+        # passandogli tutte le rimanenti comp connesse tranne nextComp
+        # versione verbosa
+        # comp_rimanenti_aggiornate = copy.deepcopy(comp_rimanenti)
+        # comp_rimanenti_aggiornate.remove(nextComp)
+        # self._ricorsione(parziale, N, comp_rimanenti_aggiornate)
+        self._ricorsione(parziale, N, comp_rimanenti[1:])
 
-        # Seconda opzione: prendo l'album con più tracce da questa componente
+        # Seconda opzione: prendo l'album con più tracce da questa componente e vado avanti, chiamo il metodo ricorsivo
+        # passandogli tutte le rimanenti comp connesse tranne nextComp
         best_album = self._getAlbumWithMostTracks(nextComp)
+
         if best_album is not None:
             parziale.append(best_album)
-            comp_rimanenti_aggiornate = copy.deepcopy(comp_rimanenti)
-            comp_rimanenti_aggiornate.remove(nextComp)
-            self._ricorsione(parziale, N, comp_rimanenti_aggiornate)
+            # comp_rimanenti_aggiornate = copy.deepcopy(comp_rimanenti)
+            # comp_rimanenti_aggiornate.remove(nextComp)
+            # comp_rimanenti_aggiornate = copy.deepcopy(comp_rimanenti)
+            # comp_rimanenti_aggiornate.remove(nextComp)
+
+            # self._ricorsione(parziale, N, comp_rimanenti_aggiornate)
+            self._ricorsione(parziale, N, comp_rimanenti[1:])
             parziale.pop()
 
     def _getConnectedComponent(self, album):
