@@ -100,7 +100,7 @@ class Controller:
         except ValueError:
             self._view._txt_result.controls.append(ft.Text(
                 "Attenzione, gli unici caratteri ammessi sono da 0 a 9: puoi inserire solo numeri", color="red"))
-            self._view.NOMEVIEW.value = ""
+            self._view._txtInN.value = ""
             self._view.update_page()
             return
 
